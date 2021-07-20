@@ -47,9 +47,22 @@ public class Main extends JFrame {
     private PlayListener lisPla;
 
     /**
+     * This panel will contain the upper part of the window.
+     */
+    private JPanel upPanel;
+    /**
      * This panel will contain the min and the max labels and fields.
      */
     private JPanel minMaxPanel;
+    /**
+     * This paner will contain the down part of the window.
+     */
+    private JPanel downPanel;
+
+    /**
+     * This attribute is the minimum size for the window.
+     */
+    private Dimension minSize;
 
     /**
      * This builder creates an instance of a Main object and initialises its content.
@@ -60,7 +73,7 @@ public class Main extends JFrame {
 
         this.lisPla = new PlayListener(this);
 
-        this.numberLabel = new JLabel("Nombre tiré :");
+        this.numberLabel = new JLabel("Generated number :");
         this.minLabel = new JLabel("Min : ");
         this.maxLabel = new JLabel("Max : ");
         this.resultLabel = new JLabel();
@@ -69,9 +82,13 @@ public class Main extends JFrame {
         this.minField = new JTextField();
         this.maxField = new JTextField();
 
-        this.playButton = new JButton("Tirer un nombre : ");
+        this.playButton = new JButton("Generate number : ");
 
         this.playButton.addActionListener(lisPla);
+
+        this.upPanel = new JPanel(new GridLayout(2, 1));
+        this.upPanel.add(this.numberLabel);
+        this.upPanel.add(this.numberField);
 
         this.minMaxPanel = new JPanel(new GridLayout(2, 2));
         this.minMaxPanel.add(this.minLabel);
@@ -79,12 +96,19 @@ public class Main extends JFrame {
         this.minMaxPanel.add(this.maxLabel);
         this.minMaxPanel.add(this.maxField);
 
-        getContentPane().setLayout(new GridLayout(5, 1));
-        add(this.numberLabel);
-        add(this.numberField);
+        this.downPanel = new JPanel(new GridLayout(2, 1));
+        this.downPanel.add(this.playButton);
+        this.downPanel.add(this.resultLabel);
+
+        getContentPane().setLayout(new GridLayout(3, 1));
+        add(this.upPanel);
         add(this.minMaxPanel);
-        add(this.playButton);
-        add(this.resultLabel);
+        add(this.downPanel);
+
+        this.minSize = new Dimension();
+        this.minSize.setSize(210, 210);
+
+        setMinimumSize(this.minSize);
     }
 
     /**

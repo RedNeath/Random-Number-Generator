@@ -26,21 +26,23 @@ public class PlayListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        int min = Integer.parseInt(this.main.getMinField().getText());
-        int max = Integer.parseInt(this.main.getMaxField().getText());
-        int random;
+        try {
+            int min = Integer.parseInt(this.main.getMinField().getText());
+            int max = Integer.parseInt(this.main.getMaxField().getText());
+            int random;
 
-        if (min <= max) {
-            random = (int) (Math.random() * (max - min + 1) + min);
+            if (min <= max) {
+                random = (int) (Math.random() * (max - min + 1) + min);
 
-            this.main.getNumberField().setText(Integer.toString(random));
-            this.main.getResultLabel().setText("Réussite");
+                this.main.getNumberField().setText(Integer.toString(random));
+                this.main.getResultLabel().setText("Success");
 
-        } else if (max < min) {
-            this.main.getResultLabel().setText("Max > Min");
+            } else if (max < min) {
+                this.main.getResultLabel().setText("Max > Min");
 
-        } else {
-            this.main.getResultLabel().setText("Echec");
+            }
+        } catch (NumberFormatException event) {
+            this.main.getResultLabel().setText("Failure");
         }
     }
 }
