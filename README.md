@@ -19,6 +19,12 @@ Now, you might also want to recreate the doc you modified (still in `ws`) :<br>
 Une fois cela fait, vous pourriez vouloir recréer la doc que vous avez modifiée (toujours au même endroit) :<br>
 `javadoc -private -author -d ../doc ../src/*.java`<br>
 <br>
-Finally, to recreate the jar version, move to `class` in your terminal and use the following command :<br>
-Enfin, pour recréer la verison jar, déplacez-vous dans `class` dans votre terminal et entrez la commande suivante :<br>
-`jar cfm RNG.jar MANIFEST.MF *.class`
+To recreate the jar version, move to `class` in your terminal and use the following command :<br>
+Pour recréer la verison jar, déplacez-vous dans `class` dans votre terminal et entrez la commande suivante :<br>
+`jar cfm RNG.jar MANIFEST.MF *.class`<br>
+<br>
+Finally, if you want to add your own language to the program, create a new text file in the `languages` folder, name it `COUNTRY.language` (`SE.language` as an example for Sweden), open the `EN.language` file in the same folder, and translate it line by line in the new file you just created.<br>
+Enfin, si vous souhaitez ajouter votre propre langue au programme, créez un nouveau fichier texte dans le dossier `languages`, puis nommez le `PAYS.language` (`SE.language` par exemple pour la Suède), ouvrez le fichier nommé `EN.language` dans le même dossier, et traduisez le ligne par ligne dans le fichier que vous venez de créer.<br>
+<br>
+Also, if you want your language to be the default language of the program, go into the `languages` folder, find your language, and rename it by adding a 0 at the beginning.<br>
+Aussi, si vous souhaitez que votre langue soit définie par défaut, rendez-vous dans le dossier `languages`, trouvez votre langue, et renommez la en ajoutant un 0 au début du nom.
