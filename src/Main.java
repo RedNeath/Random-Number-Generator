@@ -40,6 +40,10 @@ public class Main extends JFrame {
      * This button will be the signal for the generation of a random number.
      */
     private JButton playButton;
+    /**
+     * This button will be the signal for the change of the language.
+     */
+    private JButton languageButton;
 
     /**
      * This listener will be triggered when the playButton will be activated.
@@ -58,11 +62,20 @@ public class Main extends JFrame {
      * This paner will contain the down part of the window.
      */
     private JPanel downPanel;
+    /**
+     * This panel will be the first line of all the app. It'll contain the <i>numberLabel</i> and the <i>languageButton</i>.
+     */
+    private JPanel firstLinePanel;
 
     /**
      * This attribute is the minimum size for the window.
      */
     private Dimension minSize;
+
+    /**
+     * This attribute contains the index of the current language of the software.
+     */
+    private int currentLanguage = 0;
 
     /**
      * This builder creates an instance of a Main object and initialises its content.
@@ -73,21 +86,30 @@ public class Main extends JFrame {
 
         this.lisPla = new PlayListener(this);
 
-        this.numberLabel = new JLabel("Generated number :");
-        this.minLabel = new JLabel("Min : ");
-        this.maxLabel = new JLabel("Max : ");
+        LanguageReader.startUp();
+
+        this.numberLabel = new JLabel(LanguageReader.GENERATED_NUMBER);
+        this.minLabel = new JLabel(LanguageReader.MIN);
+        this.maxLabel = new JLabel(LanguageReader.MAX);
         this.resultLabel = new JLabel();
 
         this.numberField = new JTextField();
         this.minField = new JTextField();
         this.maxField = new JTextField();
 
-        this.playButton = new JButton("Generate number : ");
+        this.playButton = new JButton(LanguageReader.BUTTON);
+        Icon icon = new ImageIcon("../ressources/language_icon.PNG");
+        this.languageButton = new JButton(icon); //Must fix the wideness of the button !!
 
         this.playButton.addActionListener(lisPla);
+        this.languageButton.addActionListener(lisPla);
+
+        this.firstLinePanel = new JPanel(new BorderLayout());
+        this.firstLinePanel.add(this.numberLabel, BorderLayout.WEST);
+        this.firstLinePanel.add(this.languageButton, BorderLayout.EAST);
 
         this.upPanel = new JPanel(new GridLayout(2, 1));
-        this.upPanel.add(this.numberLabel);
+        this.upPanel.add(this.firstLinePanel);
         this.upPanel.add(this.numberField);
 
         this.minMaxPanel = new JPanel(new GridLayout(2, 2));
@@ -160,5 +182,44 @@ public class Main extends JFrame {
      */
     public JLabel getResultLabel() {
         return this.resultLabel;
+    }
+
+    /**
+     * This getter returns the play button attribute.
+     * 
+     * @return playButton.
+     */
+    public JButton getPlayButton() {
+        return this.playButton;
+    }
+
+    /**
+     * This getter returns the language button attribute.
+     * 
+     * @return languageButton.
+     */
+    public JButton getLanguageButton() {
+        return this.languageButton;
+    }
+
+    /**
+     * This method returns the index of the language currently displayed.
+     * 
+     * @return The index of the language.
+     */
+    public int getLanguage() {
+        return this.currentLanguage;
+    }
+
+    /**
+     * This method increments the index of the language.
+     */
+    public void nextLanguage() {
+        this.currentLanguage = LanguageReader.nextLanguage(this);
+        this.numberLabel.setText(LanguageReader.GENERATED_NUMBER);
+        this.minLabel.setText(LanguageReader.MIN);
+        this.maxLabel.setText(LanguageReader.MAX);
+        this.playButton.setText(LanguageReader.BUTTON);
+        this.resultLabel.setText("");
     }
 }

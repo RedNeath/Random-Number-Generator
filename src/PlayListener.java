@@ -26,6 +26,18 @@ public class PlayListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if (source.equals(this.main.getPlayButton())) {
+            generateNumber();
+        } else if (source.equals(this.main.getLanguageButton())) {
+            this.main.nextLanguage();
+        }
+    }
+
+    /**
+     * This method generates the random number if possible and returns a printed message of the state of the generation.
+     */
+    private void generateNumber() {
         try {
             int min = Integer.parseInt(this.main.getMinField().getText());
             int max = Integer.parseInt(this.main.getMaxField().getText());
@@ -35,14 +47,14 @@ public class PlayListener implements ActionListener {
                 random = (int) (Math.random() * (max - min + 1) + min);
 
                 this.main.getNumberField().setText(Integer.toString(random));
-                this.main.getResultLabel().setText("Success");
+                this.main.getResultLabel().setText(LanguageReader.SUCCESS);
 
             } else if (max < min) {
-                this.main.getResultLabel().setText("Max > Min");
+                this.main.getResultLabel().setText(LanguageReader.BAD_ENTRY);
 
             }
         } catch (NumberFormatException event) {
-            this.main.getResultLabel().setText("Failure");
+            this.main.getResultLabel().setText(LanguageReader.FAILURE);
         }
     }
 }
