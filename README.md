@@ -1,11 +1,11 @@
-# Random-Number-Generator 1.0
+# Random-Number-Generator 1.3
 A little app made with Java, using Swing to generate a random number between two bounds defined by the user.<br>
 Une petite application en Java, utilisant Swing pour générer un nombre aléatoirement entre deux bornes définies par l'utilisateur.<br>
 <br>
-This is the first verion of the program.<br>
-Ceci est la première version du logiciel.<br>
-It isn't meant to work for negative numbers, but will work as long as your values are included between 0 and +∞.<br>
-Elle n'est pas faite pour fonctionner avec des nombres négatifs, mais fonctionnera correctement tant que les valeurs entrées sont comprises entre 0 et +∞.<br>
+This is the fourth verion of the program.<br>
+Ceci est la quatrième version du logiciel.<br>
+It finally works for negative numbers, and the equiprobability is assured.<br>
+Elle fonctionne enfin avec des nombres négatifs, et l'équiprobabilité est assurée.<br>
 <br>
 You can download it in the releases as a jar if you only want to execute it, but your version of Java must be 11.0.9.1 or higher for it to work.<br>
 Il est possible de télécharger le logiciel en version exécutable (.jar) dans les releases, mais pour qu'il puisse fonctionner, votre version de Java doit être la 11.0.9.1 ou plus récente.<br>
