@@ -39,14 +39,14 @@ public class PlayListener implements ActionListener {
      */
     private void generateNumber() {
         try {
-            int min = Integer.parseInt(this.main.getMinField().getText());
-            int max = Integer.parseInt(this.main.getMaxField().getText());
-            int random;
+            double min = Integer.parseInt(this.main.getMinField().getText());
+            double max = Integer.parseInt(this.main.getMaxField().getText());
+            long random;
 
             if (min <= max) {
-                random = (int) (Math.random() * (max - min + 1) + min);
+                random = Math.round(Math.random() * ((max + 0.49) - (min - 0.5)) + (min - 0.5));
 
-                this.main.getNumberField().setText(Integer.toString(random));
+                this.main.getNumberField().setText(Long.toString(random));
                 this.main.getResultLabel().setText(LanguageReader.SUCCESS);
 
             } else if (max < min) {
